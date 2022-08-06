@@ -28,6 +28,7 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate),
     };
 
+    // passing data to parent
     props.onSaveExpenseData(expenseData);
 
     // setting input to empty
