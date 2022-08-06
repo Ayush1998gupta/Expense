@@ -21,14 +21,19 @@ const Expenses = (props) => {
         selected={filteredyear}
         onYearChange={onYearChangeHandler}
       />
-      {filteredExpress.map((expense) => (
-        <ExpenseItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        ></ExpenseItem>
-      ))}
+
+      {filteredExpress.length === 0 ? (
+        <p>No Exoense Found.</p>
+      ) : (
+        filteredExpress.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          ></ExpenseItem>
+        ))
+      )}
     </Card>
   );
 };
