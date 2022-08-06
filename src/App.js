@@ -2,7 +2,7 @@ import React from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
 
-const App=()=> {
+const App = () => {
   const expenses = [
     {
       id: 'e1',
@@ -30,6 +30,10 @@ const App=()=> {
     },
   ];
 
+  const addExpenseHandler = (expense) => {
+    console.log(expense);
+  };
+
   // under the hood this is called by react
 
   // return React.createElement(
@@ -38,14 +42,13 @@ const App=()=> {
   //   React.createElement('h2', {}, 'Lets start'),
   //   React.createElement(Expenses ,{item:expenses})
   // );
-  
 
   return (
     <div>
-      <NewExpense/>
-      <Expenses item={ expenses} />
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses item={expenses} />
     </div>
   );
-}
+};
 
 export default App;
