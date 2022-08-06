@@ -22,9 +22,8 @@ const Expenses = (props) => {
         onYearChange={onYearChangeHandler}
       />
 
-      {filteredExpress.length === 0 ? (
-        <p>No Exoense Found.</p>
-      ) : (
+      {filteredExpress.length === 0 && <p>No Exoense Found.</p>}
+      {filteredExpress.length > 0 &&
         filteredExpress.map((expense) => (
           <ExpenseItem
             key={expense.id}
@@ -32,8 +31,7 @@ const Expenses = (props) => {
             amount={expense.amount}
             date={expense.date}
           ></ExpenseItem>
-        ))
-      )}
+        ))}
     </Card>
   );
 };
