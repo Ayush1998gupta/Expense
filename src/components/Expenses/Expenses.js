@@ -15,23 +15,25 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredyear;
   });
 
+  let expenseContent = <p>No Exoense Found.</p>;
+
+  if (filteredExpress.length > 0) {
+    expenseContent = filteredExpress.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      ></ExpenseItem>
+    ));
+  }
   return (
     <Card className="expenses">
       <ExpensesFilter
         selected={filteredyear}
         onYearChange={onYearChangeHandler}
       />
-
-      {filteredExpress.length === 0 && <p>No Exoense Found.</p>}
-      {filteredExpress.length > 0 &&
-        filteredExpress.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          ></ExpenseItem>
-        ))}
+      {expenseContent}
     </Card>
   );
 };
